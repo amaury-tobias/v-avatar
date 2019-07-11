@@ -4,12 +4,17 @@
 //
 //
 //
+//
+//
+//
+//
 
 var script = {
-  name: "VAvatar",
+  name: 'VAvatar',
   props: {
     username: {
-      type: String
+      type: String,
+      default: 'A'
     },
     initials: {
       type: String
@@ -46,31 +51,31 @@ var script = {
   data: function data() {
     return {
       backgroundColors: [
-        "#F44336",
-        "#FF4081",
-        "#9C27B0",
-        "#673AB7",
-        "#3F51B5",
-        "#2196F3",
-        "#03A9F4",
-        "#00BCD4",
-        "#009688",
-        "#4CAF50",
-        "#8BC34A",
-        "#CDDC39",
-        /* '#FFEB3B' , */ "#FFC107",
-        "#FF9800",
-        "#FF5722",
-        "#795548",
-        "#9E9E9E",
-        "#607D8B"
+        '#F44336',
+        '#FF4081',
+        '#9C27B0',
+        '#673AB7',
+        '#3F51B5',
+        '#2196F3',
+        '#03A9F4',
+        '#00BCD4',
+        '#009688',
+        '#4CAF50',
+        '#8BC34A',
+        '#CDDC39',
+        /* '#FFEB3B' , */ '#FFC107',
+        '#FF9800',
+        '#FF5722',
+        '#795548',
+        '#9E9E9E',
+        '#607D8B'
       ]
-    };
+    }
   },
 
   mounted: function mounted() {
     if (!this.isImage) {
-      this.$emit("avatar-initials", this.username, this.userInitial);
+      this.$emit('avatar-initials', this.username, this.userInitial);
     }
   },
 
@@ -83,31 +88,33 @@ var script = {
             this.username.length,
             this.backgroundColors
           )
-        );
+        )
+      } else {
+        return null
       }
     },
 
     fontColor: function fontColor() {
-      if (!this.isImage) {
-        return this.color || this.lightenColor(this.background, this.lighten);
-      }
+      if (!this.isImage)
+        { return this.color || this.lightenColor(this.background, this.lighten) }
+      else { return null }
     },
 
     isImage: function isImage() {
-      return Boolean(this.src);
+      return Boolean(this.src)
     },
 
     style: function style() {
       var style = {
-        display: this.inline ? "inline-flex" : "flex",
+        display: this.inline ? 'inline-flex' : 'flex',
         width: ((this.size) + "px"),
         height: ((this.size) + "px"),
-        borderRadius: this.rounded ? "50%" : 0,
+        borderRadius: this.rounded ? '50%' : 0,
         lineHeight: ((this.size + Math.floor(this.size / 20)) + "px"),
-        fontWeight: "bold",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center"
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
       };
 
       var imgBackgroundAndFontStyle = {
@@ -126,45 +133,45 @@ var script = {
 
       Object.assign(style, backgroundAndFontStyle);
 
-      return style;
+      return style
     },
 
     userInitial: function userInitial() {
       if (!this.isImage) {
         var initials = this.initials || this.initial(this.username);
-        return initials;
+        return initials
       }
-      return "";
+      return ''
     }
   },
 
   methods: {
     initial: function initial(username) {
       var parts = username.split(/[ -]/);
-      var initials = "";
+      var initials = '';
 
       for (var i = 0; i < parts.length; i++) {
         initials += parts[i].charAt(0);
       }
 
       if (initials.length > 3 && initials.search(/[A-Z]/) !== -1) {
-        initials = initials.replace(/[a-z]+/g, "");
+        initials = initials.replace(/[a-z]+/g, '');
       }
 
       initials = initials.substr(0, 3).toUpperCase();
 
-      return initials;
+      return initials
     },
 
     randomBackgroundColor: function randomBackgroundColor(seed, colors) {
-      return colors[seed % colors.length];
+      return colors[seed % colors.length]
     },
 
     lightenColor: function lightenColor(hex, amt) {
       // From https://css-tricks.com/snippets/javascript/lighten-darken-color/
       var usePound = false;
 
-      if (hex[0] === "#") {
+      if (hex[0] === '#') {
         hex = hex.slice(1);
         usePound = true;
       }
@@ -185,7 +192,7 @@ var script = {
       if (g > 255) { g = 255; }
       else if (g < 0) { g = 0; }
 
-      return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
+      return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16)
     }
   }
 };function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -283,7 +290,7 @@ var __vue_staticRenderFns__ = [];
   /* scoped */
   var __vue_scope_id__ = undefined;
   /* module identifier */
-  var __vue_module_identifier__ = "data-v-369cfb7c";
+  var __vue_module_identifier__ = "data-v-e092e17c";
   /* functional template */
   var __vue_is_functional_template__ = false;
   /* style inject */
@@ -305,18 +312,17 @@ var __vue_staticRenderFns__ = [];
 
 // install function executed by Vue.use()
 function install(Vue) {
-  if (install.installed) { return; }
+  if (install.installed) { return }
   install.installed = true;
   Vue.component('VAvatar', component);
 }
 
 // Create module definition for Vue.use()
 var plugin = {
-  install: install,
+  install: install
 };
 
 // To auto-install when vue is found
-/* global window global */
 var GlobalVue = null;
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue;
@@ -329,9 +335,4 @@ if (GlobalVue) {
 
 // Inject install function into component - allows component
 // to be registered via Vue.use() as well as Vue.component()
-component.install = install;
-
-// It's possible to expose named exports when writing components that can
-// also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
-// export const RollupDemoDirective = component;
-exports.default=component;
+component.install = install;exports.default=component;
