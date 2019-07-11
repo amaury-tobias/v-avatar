@@ -188,8 +188,8 @@ module.exports = {
 # install dependencies
 npm install
 
-# serve gh pages with hot reload at localhost:8080/gh-pages/index.html
-npm run dev
+# serve whith hot reload al localhost:8080
+npm run serve
 
 # build
 npm run build

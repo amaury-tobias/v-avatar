@@ -1,8 +1,4 @@
-## v0.1.1 - `Aurora`
-
-- **[TYPO]** description en `package.json`
-
-## v0.1.0
+## v0.1.0 - `Aurora`
 
 - **[FIX]** Computed properties `background()`, `fontColor()` return.
 - **[FIX]** repository.url en `package.json`
