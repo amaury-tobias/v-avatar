@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>@amaury-tobias/v-avatar</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/@amaury-tobias/v-avatar"></script>
   </head>
   <body>
+    <a id="fork" href="https://github.com/amaury-tobias/v-avatar"
+      ><img
+        width="149"
+        height="149"
+        src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
+        class="attachment-full size-full"
+        alt="Fork me on GitHub"
+        data-recalc-dims="1"
+    /></a>
+
     <div id="app">
+      <section class="hero">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">
+              <v-avatar
+                inline
+                username="V A"
+              ></v-avatar>
+              v-avatar
+            </h1>
+            <h2 class="subtitle heading has-text-weight-light">
+              Vue.js Component
+            </h2>
+          </div>
+        </div>
+      </section>
       <h1>v-avatar</h1>
       <v-avatar username="Jon Doe"></v-avatar>
       <v-avatar
@@ -42,7 +77,13 @@
 
       <v-avatar username="Darth Vader" initials="AS" :size="100"> </v-avatar>
 
-      <v-avatar inline v-for="i in 18" :username='"A".repeat(i)' :initials="i"></v-avatar>
+      <v-avatar
+        inline
+        v-for="i in 18"
+        :username='"A".repeat(i)'
+        :initials="i.toString()"
+        :key="i"
+      ></v-avatar>
     </div>
     <script>
       var app = new Vue({
@@ -52,5 +93,12 @@
         }
       });
     </script>
+    <style>
+      #fork {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    </style>
   </body>
 </html>
