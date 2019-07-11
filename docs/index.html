@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/@amaury-tobias/v-avatar"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>v-avatar</h1>
+      <v-avatar username="Jon Doe"></v-avatar>
+      <v-avatar
+        username="Hubert-Félix Thiéfaine"
+        background-color="#FFC107"
+        :size="100"
+        :rounded="false"
+        :lighten="20"
+      ></v-avatar>
+
+      <v-avatar
+        username="Hubert-Félix Thiéfaine"
+        background-color="#FFC107"
+        :size="100"
+        :rounded="false"
+        color="#fff"
+      >
+      </v-avatar>
+
+      <v-avatar
+        username="Darth Vader"
+        background-color="#000"
+        :size="100"
+        :rounded="false"
+      >
+      </v-avatar>
+
+      <v-avatar
+        username="Darth Vader"
+        src="https://i.pinimg.com/236x/45/37/ab/4537abebd9bebe9ac09ca93707367b19.jpg"
+        :size="100"
+      >
+      </v-avatar>
+
+      <v-avatar username="Darth Vader" initials="AS" :size="100"> </v-avatar>
+
+      <v-avatar inline v-for="i in 18" :username='"A".repeat(i)' :initials="i"></v-avatar>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        components: {
+          avatar: VAvatar
+        }
+      });
+    </script>
+  </body>
+</html>
