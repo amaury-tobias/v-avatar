@@ -1,13 +1,13 @@
 <script>
 export default {
-    name: 'VAvatar', // vue component name
-    data() {
-        return {
-            counter: 5,
-            initCounter: 5,
-        };
-    },
-}
+  name: "VAvatar", // vue component name
+  data() {
+    return {
+      counter: 5,
+      initCounter: 5
+    };
+  }
+};
 </script>
 
 <template>
@@ -20,16 +20,16 @@ export default {
 </template>
 
 <style scoped>
-    .v-avatar {
-        display: block;
-        width: 400px;
-        margin: 25px auto;
-        border: 1px solid #ccc;
-        background: #eaeaea;
-        text-align: center;
-        padding: 25px;
-    }
-    .v-avatar p {
-        margin: 0 0 1em;
-    }
+.v-avatar {
+  display: block;
+  width: 400px;
+  margin: 25px auto;
+  border: 1px solid #ccc;
+  background: #eaeaea;
+  text-align: center;
+  padding: 25px;
+}
+.v-avatar p {
+  margin: 0 0 1em;
+}
 </style>

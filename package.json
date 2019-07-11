@@ -1,13 +1,18 @@
 {
   "name": "@amaury-tobias/v-avatar",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Componente de abatar basado en Vue.js",
   "author": "amaury.tobiasqr@gmail.com",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amaury-tobias/v-avatar.git"
   },
+  "keywords": [
+    "avatar",
+    "user",
+    "vue"
+  ],
   "main": "dist/v-avatar.ssr.js",
   "module": "dist/v-avatar.esm.js",
   "unpkg": "dist/v-avatar.min.js",
