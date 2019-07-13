@@ -1,9 +1,5 @@
 import { expect } from 'chai'
-import { mount } from '@vue/test-utils'
-//import vAvatar from '../../src/v-avatar.vue'
-
-import Vue from 'vue'
-
+import { shallowMount } from '@vue/test-utils'
 import Avatar from '../../src/v-avatar.vue'
 
 describe('Avatar.vue', function() {
@@ -40,29 +36,30 @@ describe('Avatar.vue', function() {
   it("should render initials if no 'src' is given", function() {
     var username = 'Hubert-Félix'
 
-    var vm = new Vue({
-      template: '<div><avatar username="' + username + '"></avatar></div>',
-      components: { Avatar }
-    }).$mount()
+    const wrapper = shallowMount(Avatar, {
+      propsData: {
+        username: username
+      }
+    })
 
-    var initial = vm.$children[0].initial(username)
+    const initial = wrapper.find('span').text()
     expect(initial).to.equal('HF')
     expect(
-      vm.$el.querySelector('.vue-avatar--wrapper > span').textContent
+      wrapper.vm.$el.querySelector('.vue-avatar--wrapper > span').textContent
     ).to.contain(initial)
   })
 
   it("should render an image with the correct 'src' when given", function() {
     var username = 'Hubert-Félix'
 
-    const wrapper = mount(Avatar, {
+    const wrapper = shallowMount(Avatar, {
       propsData: {
         username: username,
         src: 'path/to/img'
       }
     })
 
-    var backgroundImage = wrapper.element.style.backgroundImage
-    expect(backgroundImage).to.contain('path/to/img')
+    const initial = wrapper.find('.vue-avatar--wrapper').html()
+    expect(initial).to.contain('path/to/img')
   })
 })

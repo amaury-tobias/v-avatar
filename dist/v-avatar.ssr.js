@@ -14,7 +14,7 @@ var script = {
   props: {
     username: {
       type: String,
-      default: 'A'
+      default: ''
     },
     initials: {
       type: String
@@ -40,7 +40,7 @@ var script = {
     },
     rounded: {
       type: Boolean,
-      default: true
+      default: false
     },
     lighten: {
       type: Number,
@@ -63,7 +63,7 @@ var script = {
         '#4CAF50',
         '#8BC34A',
         '#CDDC39',
-        /* '#FFEB3B' , */ '#FFC107',
+        '#FFC107',
         '#FF9800',
         '#FF5722',
         '#795548',
@@ -118,9 +118,12 @@ var script = {
       };
 
       var imgBackgroundAndFontStyle = {
-        background: ("transparent url('" + (this.src) + "') no-repeat scroll 0% 0% / " + (this.size) + "px " + (this.size) + "px content-box border-box")
+        'background-image': ("url(" + (this.src) + ")"),
+        'background-position': 'center',
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover'
       };
-
+      //background: `transparent url('${this.src}') no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
       var initialBackgroundAndFontStyle = {
         backgroundColor: this.background,
         font: ((Math.floor(this.size / 2.5)) + "px/" + (this.size) + "px Helvetica, Arial, sans-serif"),
@@ -290,7 +293,7 @@ var __vue_staticRenderFns__ = [];
   /* scoped */
   var __vue_scope_id__ = undefined;
   /* module identifier */
-  var __vue_module_identifier__ = "data-v-e092e17c";
+  var __vue_module_identifier__ = "data-v-5d799b4c";
   /* functional template */
   var __vue_is_functional_template__ = false;
   /* style inject */

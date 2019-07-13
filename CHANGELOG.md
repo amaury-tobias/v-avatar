@@ -1,4 +1,20 @@
-## v0.1.0 - `Aurora`
+# v1.0.0 - `Aurora`
+
+- **[FIX]** Propiedad "src" para obtener imagen.
+- **[FIX]** Tests completos.
+- **[FIX]** Rollup file linting.
+
+---
+
+- **[REPLACE]** Valor rounded default = false.
+- **[REPLACE]** background-image en css para remplazar a la regla background.
+- **[REPLACE]** Propiedad "username" con valor default vacio.
+
+---
+
+- **[ADD]** Página demo y documentación
+
+## v0.1.0
 
 - **[FIX]** Computed properties `background()`, `fontColor()` return.
 - **[FIX]** repository.url en `package.json`

@@ -28,11 +28,8 @@
       <section class="hero">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <h1 class="title">
-              <v-avatar
-                inline
-                username="V A"
-              ></v-avatar>
+            <h1 class="title is-size-1">
+              <v-avatar inline username="V A"></v-avatar>
               v-avatar
             </h1>
             <h2 class="subtitle heading has-text-weight-light">
@@ -41,57 +38,341 @@
           </div>
         </div>
       </section>
-      <h1>v-avatar</h1>
-      <v-avatar username="Jon Doe"></v-avatar>
-      <v-avatar
-        username="Hubert-Félix Thiéfaine"
-        background-color="#FFC107"
-        :size="100"
-        :rounded="false"
-        :lighten="20"
-      ></v-avatar>
+      <section class="section">
+        <div class="container">
+          <p>
+            v-avatar es un componente para vue que permite mostrar una imagen de
+            avatar sin necesidad de incluir un archivo de imagen. Este
+            componente esta altamente inspirado y basado en el trabajo de
+            https://github.com/eliep/vue-avatar con la intencion de actualizar
+            sus dependencias y brindar aspecto mas responsivo.
+          </p>
+          <br />
+          <ul>
+            <li><strong>Para el uso del componente es necesario:</strong></li>
 
-      <v-avatar
-        username="Hubert-Félix Thiéfaine"
-        background-color="#FFC107"
-        :size="100"
-        :rounded="false"
-        color="#fff"
-      >
-      </v-avatar>
+            <li>- Dividir el username con espacios y guiones.</li>
+            <li>- Utiliza la primer letra de cada palabra del nombre.</li>
+            <li>- Utiliza hasta un maximo de tres letras iniciales.</li>
+            <li>
+              - Si el nombre esta dividido en mas de tres partes y alguna de
+              esta comienza con mayuscula, saltara aquellas que comienzen en
+              minuscula.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-      <v-avatar
-        username="Darth Vader"
-        background-color="#000"
-        :size="100"
-        :rounded="false"
-      >
-      </v-avatar>
+      <section class="section">
+        <p class="title is-size-2">Instalación</p>
+        <p><code>npm install @amaury-tobias/v-avatar</code></p>
+        <br />
+        <p class="title is-size-2">Uso</p>
+        <p>
+          v-avatar es un modulo UMD, por lo que puede ser utilizado en tanto en
+          una instancia de Vue como en Nuxt como en un entorno non-modular donde
+          <code>vAvatar</code> sera registrada como variable global.
+        </p>
+        <br />
+        <p class="title is-size-4">VUE COMPONENT</p>
+        <pre><code class="lang-html">
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;v-avatar username='John Doe'&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
 
-      <v-avatar
-        username="Darth Vader"
-        src="https://i.pinimg.com/236x/45/37/ab/4537abebd9bebe9ac09ca93707367b19.jpg"
-        :size="100"
-      >
-      </v-avatar>
+  &lt;script&gt;
+    import vAvatar from '@amaury-tobias/v-avatar'
 
-      <v-avatar username="Darth Vader" initials="AS" :size="100"> </v-avatar>
+    export default {
+      components: {
+        vAvatar
+      }
+    }
+  &lt;/script&gt;
+          </code></pre>
+        <br />
+        <p class="title is-size-4">VUE GLOBAL</p>
+        <pre><code class="lang-js">
+  import Vue from "vue"
+  import vAvatar from "@amaury-tobias/v-avatar"
 
-      <v-avatar
+  Vue.use(vAvatar);
+          </code></pre>
+        <br>
+        <p class="title is-size-4">NUXT</p>
+        <p><code>./plugins/vAvatar.js</code></p>
+        <pre><code class="lang-js">
+  import Vue from "vue"
+  import vAvatar from "@amaury-tobias/v-avatar"
+
+  Vue.use(vAvatar);
+          </code></pre>
+        <br>
+        <p><code>nuxt.config.js</code></p>
+        <pre><code class="lang-js">
+  module.exports = {
+    plugins: ["~/plugins/vAvatar.js"]
+  };
+          </code></pre>
+        <br>
+        <p><code>*.vue &lt;template&gt;</code></p>
+        <pre><code class="lang-html">
+  &lt;v-avatar username="John Doe"/&gt;</span>
+          </code></pre>
+          <br>
+          <p class="title is-size-4">BROWSER</p>
+          <pre><code class="lang-html">
+  &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;
+        &lt;script src="https://unpkg.com/@amaury-tobias/v-avatar"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id="app"&gt;
+          &lt;v-avatar username="Jon Doe"&gt;&lt;/v-avatar&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+          var app = new Vue({
+            el: "#app",
+              components: {
+                avatar: VAvatar
+              }
+          });
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+          </code></pre>
+          <br>
+          <p class="title is-size-4">PROPIEDADES</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Required</th>
+              <th>Default</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>username</td>
+              <td>Y</td>
+              <td>-</td>
+              <td>String</td>
+              <td>Nombre utilizado para computar las iniciales.</td>
+            </tr>
+            <tr>
+              <td>initials</td>
+              <td>N</td>
+              <td>-</td>
+              <td>String</td>
+              <td>Iniciales forzadas para sustituir a las computadas.</td>
+            </tr>
+            <tr>
+              <td>inline</td>
+              <td>N</td>
+              <td>false</td>
+              <td>Boolean</td>
+              <td>display: inline-flex en lugar de flex</td>
+            </tr>
+            <tr>
+              <td>src</td>
+              <td>N</td>
+              <td>-</td>
+              <td>String</td>
+              <td>Path to the avatar image to display.</td>
+            </tr>
+            <tr>
+              <td>:customStyle</td>
+              <td>N</td>
+              <td>-</td>
+              <td>Object</td>
+              <td>A custom style object to override the base styles.</td>
+            </tr>
+            <tr>
+              <td>backgroundColor</td>
+              <td>N</td>
+              <td>-</td>
+              <td>String</td>
+              <td>
+                The avatar background color to use if no image is provided. If
+                none is specified, a background color will be picked depending
+                on the user name length.
+              </td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>N</td>
+              <td>-</td>
+              <td>String</td>
+              <td>
+                The font color used to render the user initials. If none is
+                provided, the background color is used to compute the font
+                color.
+              </td>
+            </tr>
+            <tr>
+              <td>:lighten</td>
+              <td>N</td>
+              <td>80</td>
+              <td>Number</td>
+              <td>
+                A factor by which the background color must be lightened to
+                produce the font color. Number between [-100,100].
+              </td>
+            </tr>
+            <tr>
+              <td>:size</td>
+              <td>N</td>
+              <td>50</td>
+              <td>Number</td>
+              <td>The avatar size in pixel.</td>
+            </tr>
+            <tr>
+              <td>:rounded</td>
+              <td>N</td>
+              <td>true</td>
+              <td>Boolean</td>
+              <td>True if the avatar must be rounded.</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p class="title is-size-4">EVENTOS</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Arguments</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@avatar-initials</td>
+              <td>
+                username (the value of the username props), initials (the value
+                of the computed initials or the initials props if any)
+              </td>
+              <td>
+                This event is trigger when the component is ready with component
+                username and initial.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p class="title is-size-4">BUILD SETUP</p>
+        <pre><code class="lang-bash">
+  # install dependencies
+  npm install
+
+  # serve whith hot reload al localhost:8080
+  npm run serve
+
+  # build
+  npm run build
+          </code></pre>
+          <br>
+          <p class="title is-size-4">TEST</p>
+        <pre><code class="lang-bash">npm test</code></pre>
+        <br>
+        <p class="title is-size-4">DEMO</p>
+        <div class="level">
+          <div class="level-item">
+              <v-avatar inline username="Amaury Tobias"></v-avatar>
+          </div>
+          <div class="level-item">
+              <pre><code class="lang-bash"> &lt;v-avatar username="Amaury Tobias"&gt;&lt;/v-avatar&gt;</code></pre>
+          </div>
+        </div>
+<hr>
+        <div class="level">
+          <div class="level-item">
+              <v-avatar inline username="Amaury-Tobias Quiroz"
+              background-color="#FFC107"
+              :size="100"
+              :rounded="false"
+              :lighten="20"></v-avatar>
+          </div>
+          <div class="level-item">
+              <pre><code class="lang-bash">
+  &lt;v-avatar
+  username="Amaury-Tobias Quiroz"
+  background-color="#FFC107"
+  :size="100"
+  :rounded="false"
+  :lighten="20"
+&gt;&lt;/v-avatar&gt;
+              </code></pre>
+          </div>
+        </div>
+
+        <hr>
+        <div class="level">
+          <div class="level-item">
+              <v-avatar inline username="Amaury-Tobias Quiroz"
+              background-color="#FFC107"
+              :size="100"
+              :rounded="false"
+              color="#fff"></v-avatar>
+          </div>
+          <div class="level-item">
+              <pre><code class="lang-bash">
+  &lt;v-avatar
+  username="Amaury-Tobias Quiroz"
+  background-color="#FFC107"
+  :size="100"
+  :rounded="false"
+  color="#fff"
+&gt;&lt;/v-avatar&gt;
+              </code></pre>
+          </div>
+        </div>
+
+
+        <hr>
+        <div class="level">
+          <div class="level-item">
+              <v-avatar inline
+              username="Cutte Puppy"
+              src="https://i.pinimg.com/236x/45/37/ab/4537abebd9bebe9ac09ca93707367b19.jpg"
+              :size="100"
+              ></v-avatar>
+          </div>
+          <div class="level-item">
+              <pre><code class="lang-bash">
+  &lt;v-avatar
+  username="Cutte Puppy"
+  src="https://i.pinimg.com/236x/45/37/ab/4537abebd9bebe9ac09ca93707367b19.jpg"
+  :size="100"
+&gt;&lt;/v-avatar&gt;
+              </code></pre>
+          </div>
+        </div>
+        <p class="title is-size-4">COLORES</p>
+        <p>Basado en la longitud de la propiedad "username"</p>
+        <br>
+        <v-avatar
         inline
         v-for="i in 18"
         :username='"A".repeat(i)'
         :initials="i.toString()"
         :key="i"
       ></v-avatar>
+      </section>
     </div>
     <script>
       var app = new Vue({
-        el: "#app",
+        el: '#app',
         components: {
           avatar: VAvatar
         }
-      });
+      })
     </script>
     <style>
       #fork {
