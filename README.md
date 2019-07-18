@@ -1,6 +1,7 @@
 # v-avatar
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/amaury_tobias)
+[![Build Status](https://travis-ci.org/amaury-tobias/v-avatar.svg?branch=master)](https://travis-ci.org/amaury-tobias/v-avatar)
 
 Componente de Avatar para Vue.js
 
@@ -46,10 +47,10 @@ export default {
 ### OR GLOBAL
 
 ```js
-import Vue from "vue";
-import vAvatar from "@amaury-tobias/v-avatar";
+import Vue from 'vue'
+import vAvatar from '@amaury-tobias/v-avatar'
 
-Vue.use(vAvatar);
+Vue.use(vAvatar)
 ```
 
 ### NUXT
@@ -57,18 +58,18 @@ Vue.use(vAvatar);
 `./plugins/vAvatar.js`
 
 ```js
-import Vue from "vue";
-import vAvatar from "@amaury-tobias/v-avatar";
+import Vue from 'vue'
+import vAvatar from '@amaury-tobias/v-avatar'
 
-Vue.use(vAvatar);
+Vue.use(vAvatar)
 ```
 
 `nuxt.config.js`
 
 ```js
 module.exports = {
-  plugins: ["~/plugins/vAvatar.js"]
-};
+  plugins: ['~/plugins/vAvatar.js']
+}
 ```
 
 `*.vue <template>`
@@ -92,11 +93,11 @@ module.exports = {
     </div>
     <script>
       var app = new Vue({
-        el: "#app",
+        el: '#app',
         components: {
           avatar: VAvatar
         }
-      });
+      })
     </script>
   </body>
 </html>
