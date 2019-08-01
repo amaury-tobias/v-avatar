@@ -1,3 +1,7 @@
+# v1.0.1
+
+- **[UPDATE]** dependency update
+
 # v1.0.0 - `Aurora`
 
 - **[FIX]** Propiedad "src" para obtener imagen.
