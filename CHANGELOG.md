@@ -1,3 +1,8 @@
+# v1.0.2
+
+- **[UPDATE]** dependency update
+- **[ADD]** package-lock.json
+
 # v1.0.1
 
 - **[UPDATE]** dependency update
