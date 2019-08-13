@@ -1,3 +1,8 @@
+# v1.0.3
+
+- **[UPDATE]** dependency update
+- **[ADD]** nodejs.yml github activities to test an publish
+
 # v1.0.2
 
 - **[UPDATE]** dependency update
