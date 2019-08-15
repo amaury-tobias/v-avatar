@@ -1,9 +1,6 @@
 name: Node.js test and publish
 
-on:
-  push:
-    branches:
-      - master
+on: release
 
 jobs:
   build:
