@@ -1,7 +1,11 @@
 # v-avatar
 
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/amaury_tobias)
-[![Build Status](https://travis-ci.org/amaury-tobias/v-avatar.svg?branch=master)](https://travis-ci.org/amaury-tobias/v-avatar)
+[![Made with vue](https://img.shields.io/badge/SUPPORT-ME-F16061?style=for-the-badge&logo=ko-fi&labelCoor=F16061&logoColo0)](https://ko-fi.com/amaury_tobias)
+[![Made with vue](https://img.shields.io/badge/MADE%20WITH-VUE-brightgreen?style=for-the-badge&logo=vue.js)](https://vuejs.org/)
+[![Build Status](https://img.shields.io/travis/amaury-tobias/v-avatar?style=for-the-badge)](https://travis-ci.org/amaury-tobias/v-avatar)
+[![npm](https://img.shields.io/npm/v/@amaury-tobias/v-avatar?style=for-the-badge)](https://www.npmjs.com/package/@amaury-tobias/v-avatar)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@amaury-tobias/v-avatar?style=for-the-badge)
+[![NPM](https://img.shields.io/npm/l/@amaury-tobias/v-avatar?style=for-the-badge)](LICENCE)
 
 Componente de Avatar para Vue.js
 
@@ -14,13 +18,13 @@ Para el uso del componente es necesario:
 - Utiliza hasta un maximo de tres letras iniciales.
 - Si el nombre esta dividido en mas de tres partes y alguna de esta comienza con mayuscula, saltara aquellas que comienzen en minuscula.
 
-Puedes encontrar algunos ejemplos [aqui](https://amaury-tobias.github.io/v-avatar/).
+Puedes encontrar algunos ejemplos [aquí](https://amaury-tobias.github.io/v-avatar/).
 
-## Installation
+## Instalación
 
 `npm install @amaury-tobias/v-avatar`
 
-## Usage
+## Uso
 
 v-avatar es un modulo UMD, por lo que puede ser utilizado en tanto en una instancia de Vue como en Nuxt como en un entorno non-modular donde `vAvatar` sera registrada como variable global.
 
@@ -129,42 +133,52 @@ module.exports = {
     <td> N </td>
     <td> - </td>
     <td> String </td>
-    <td>Path to the avatar image to display.</td></tr>
+    <td>Image Path.</td></tr>
   <tr><td>:customStyle</td>
     <td> N </td>
     <td> - </td>
     <td> Object </td>
-    <td>A custom style object to override the base styles.</td></tr>
+    <td>CSS custom.</td></tr>
   <tr><td>backgroundColor</td>
     <td> N </td>
     <td> - </td>
     <td> String </td>
     <td>The avatar background color to use if no image is provided. If none
       is specified, a background color will be picked depending on
-      the user name length.</td></tr>
+      the user name length.
+      Especifica el color de fondo a utilizar si no se provee una imagen, el color de fondo se calcula en base a la longitud del nombre si no se da uno especifico.
+      </td></tr>
   <tr><td>color</td>
     <td> N </td>
     <td> - </td>
     <td> String </td>
     <td>The font color used to render the user initials. If none
       is provided, the background color is used to compute
-      the font color.</td></tr>
+      the font color.
+      Color utilizado para mostrar las iniciales del usuario, si no es asignada se calcula en base al color de fondo.
+      </td></tr>
   <tr><td>:lighten</td>
     <td> N </td>
     <td> 80 </td>
     <td> Number </td>
     <td>A factor by which the background color must be lightened to
-      produce the font color. Number between [-100,100].</td></tr>
+      produce the font color. Number between [-100,100].
+      Valor utilizado para calcular la diferencia entre el color de fondo y de fuente, puede ser un valor entre [-100, 100].
+      </td></tr>
   <tr><td>:size</td>
     <td> N </td>
     <td> 50 </td>
     <td> Number </td>
-    <td>The avatar size in pixel.</td></tr>
+    <td>The avatar size in pixel.
+    Tamaño del avatar en pixeles.
+    </td></tr>
   <tr><td>:rounded</td>
     <td> N </td>
-    <td> true </td>
+    <td> false </td>
     <td> Boolean </td>
-    <td>True if the avatar must be rounded.</td></tr>
+    <td>True if the avatar must be rounded.
+    True para mostrar el avatar redondo.
+    </td></tr>
 </tbody>
 </table>
 
@@ -177,9 +191,9 @@ module.exports = {
 <tbody>
   <tr><td>@avatar-initials</td>
     <td>username (the value of the username props),
-      initials (the value of the computed initials or the initials props if any)</td>
+      initials (the value of the computed initials or the initials props if any). username (en valor de la prop username), initials (el valor de las iniciales calculadas o las dadas en los props).</td>
     <td>This event is trigger when the component is ready with component
-      username and initial.</td></tr>
+      username and initial. El evento es lanzado cuando el componente esta listo y las iniciales han sido calculadas.</td></tr>
 </tbody>
 </table>
 

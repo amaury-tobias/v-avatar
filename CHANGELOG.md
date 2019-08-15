@@ -1,3 +1,10 @@
+# v1.0.4
+
+- **[UPDATE]** npm prepublish to prepare
+- **[FIX]** npm run serve now works correct
+- **[ADD]** App.vue main.js to use in development
+- **[UPDATE]** BADGES on README
+
 # v1.0.3
 
 - **[UPDATE]** dependency update
