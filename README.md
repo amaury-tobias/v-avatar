@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/travis/amaury-tobias/v-avatar?style=for-the-badge)](https://travis-ci.org/amaury-tobias/v-avatar)
 [![npm](https://img.shields.io/npm/v/@amaury-tobias/v-avatar?style=for-the-badge)](https://www.npmjs.com/package/@amaury-tobias/v-avatar)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@amaury-tobias/v-avatar?style=for-the-badge)
-[![NPM](https://img.shields.io/npm/l/@amaury-tobias/v-avatar?style=for-the-badge)](LICENCE)
+[![NPM](https://img.shields.io/npm/l/@amaury-tobias/v-avatar?style=for-the-badge)](LICENSE)
 
 Componente de Avatar para Vue.js
 
@@ -99,7 +99,7 @@ module.exports = {
       var app = new Vue({
         el: '#app',
         components: {
-          avatar: VAvatar
+          VAvatar
         }
       })
     </script>

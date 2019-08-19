@@ -1,4 +1,4 @@
-name: Node.js test and publish
+name: Node.js test and npm publish
 
 on: release
 
@@ -22,7 +22,7 @@ jobs:
         with:
           version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm install
+      - run: npm ci
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
