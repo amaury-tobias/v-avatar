@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   title: 'v-avatar',
-  base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/v-avatar' : '/',
+  base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/v-avatar/' : '/',
   locales: {
     '/': {
       lang: 'en-US',
