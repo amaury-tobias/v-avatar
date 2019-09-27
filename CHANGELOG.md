@@ -1,3 +1,7 @@
+# v1.0.5
+- **[UPDATE]** npm dependencies update
+- **[NEW]** Vuepress Documentation
+
 # v1.0.4
 
 - **[UPDATE]** npm prepublish to prepare
