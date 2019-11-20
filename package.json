@@ -2,19 +2,19 @@
   "name": "@amaury-tobias/v-avatar",
   "version": "1.0.5",
   "description": "Componente de avatar basado en Vue.js",
-  "homepage": "https://amaury-tobias.github.io/v-avatar/",
   "author": "amaury.tobiasqr@gmail.com",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/amaury-tobias/v-avatar.git"
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
+    "lint": "vue-cli-service lint",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
+    "docs:build": "cross-env DEPLOY_ENV=GH_PAGES vuepress build docs",
+    "docs:dev": "vuepress dev docs",
+    "prepare": "npm run build",
+    "test": "vue-cli-service test:unit"
   },
-  "keywords": [
-    "avatar",
-    "user",
-    "vue",
-    "vue-component"
-  ],
   "main": "dist/v-avatar.ssr.js",
   "module": "dist/v-avatar.esm.js",
   "unpkg": "dist/v-avatar.min.js",
@@ -26,45 +26,45 @@
     "CHANGELOG",
     "LICENSE"
   ],
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit",
-    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
-    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
-    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
-    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
-    "prepare": "npm run build",
-    "docs:build": "cross-env DEPLOY_ENV=GH_PAGES vuepress build docs",
-    "docs:dev": "vuepress dev docs"
-  },
   "dependencies": {},
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-unit-mocha": "^4.0.5",
+    "@vue/cli-plugin-babel": "^4.0.5",
     "@vue/cli-plugin-eslint": "^4.0.5",
+    "@vue/cli-plugin-unit-mocha": "^4.0.5",
     "@vue/cli-service": "^4.0.5",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "@vuepress/plugin-register-components": "^1.1.0",
+    "@vuepress/plugin-register-components": "^1.2.0",
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
-    "cross-env": "^6.0.0",
+    "cross-env": "^6.0.3",
     "eslint": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.0.1",
     "minimist": "^1.2.0",
-    "rollup": "^1.21.4",
+    "rollup": "^1.27.3",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-terser": "^5.1.2",
-    "rollup-plugin-vue": "^5.0.1",
+    "rollup-plugin-vue": "^5.1.2",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "^1.1.0"
+    "vuepress": "^1.2.0"
   },
   "gitHooks": {
     "pre-push": "npm run build && npm test"
+  },
+  "homepage": "https://amaury-tobias.github.io/v-avatar/",
+  "keywords": [
+    "avatar",
+    "user",
+    "vue",
+    "vue-component"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amaury-tobias/v-avatar.git"
   }
 }
