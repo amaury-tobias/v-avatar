@@ -1,24 +1,31 @@
-// rollup.config.js
 import vue from 'rollup-plugin-vue'
-import buble from 'rollup-plugin-buble'
+import buble from '@rollup/plugin-buble'
+import replace from '@rollup/plugin-replace'
+
 import commonjs from 'rollup-plugin-commonjs'
-import replace from 'rollup-plugin-replace'
+
 import { terser } from 'rollup-plugin-terser'
+import typescript from 'rollup-plugin-typescript'
 import minimist from 'minimist'
 
 const argv = minimist(process.argv.slice(2))
 
 const baseConfig = {
-  input: 'src/entry.js',
+  input: 'src/build.ts',
   plugins: {
     preVue: [
+      typescript({
+        tsconfig: false,
+        experimentalDecorators: true,
+        module: 'es2015'
+      }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),
       commonjs()
     ],
     vue: {
-      css: true,
+      css: false,
       template: {
         isProduction: true
       }
@@ -27,22 +34,14 @@ const baseConfig = {
   }
 }
 
-// UMD/IIFE shared settings: externals and output.globals
-// Refer to https://rollupjs.org/guide/en#output-globals for details
-const external = [
-  // list external dependencies, exactly the way it is written in the import statement.
-  // eg. 'jquery'
-]
-const globals = {
-  // Provide global variable names to replace your external imports
-  // eg. jquery: '$'
-}
+const external = ['vue']
+const globals = { vue: 'Vue' }
 
-// Customize configs for individual targets
 const buildFormats = []
 if (!argv.format || argv.format === 'es') {
   const esConfig = {
     ...baseConfig,
+    external,
     output: {
       file: 'dist/v-avatar.esm.js',
       format: 'esm',

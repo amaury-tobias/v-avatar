@@ -1,15 +1,46 @@
-<template>
+<template functional>
   <div
     class="vue-avatar--wrapper"
-    :style="[style, customStyle]"
+    :style="
+      $options.methods.constructStyle(
+        props.inline,
+        props.size,
+        props.rounded,
+        props.src,
+        $options.methods.background(
+          props.backgroundColor,
+          $options.methods.randomBackgroundColor(
+            props.username.length,
+            props.backgroundColors
+          )
+        ),
+        $options.methods.fontColor(
+          props.color,
+          $options.methods.lightenColor(
+            $options.methods.background(
+              props.backgroundColor,
+              $options.methods.randomBackgroundColor(
+                props.username.length,
+                props.backgroundColors
+              )
+            ),
+            props.lighten
+          )
+        )
+      )
+    "
     aria-hidden="true"
   >
-    <span v-show="!this.isImage">{{ userInitial }}</span>
+    <span v-if="!props.src">
+      {{ $options.methods.getUsernameInitials(props.username) }}
+    </span>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'VAvatar',
   props: {
     username: {
@@ -17,16 +48,16 @@ export default {
       default: ''
     },
     initials: {
-      type: String
+      type: String,
+      default: ''
     },
     backgroundColor: {
-      type: String
+      type: String,
+      default: ''
     },
     color: {
-      type: String
-    },
-    customStyle: {
-      type: Object
+      type: String,
+      default: ''
     },
     inline: {
       type: Boolean
@@ -36,7 +67,8 @@ export default {
       default: 50
     },
     src: {
-      type: String
+      type: String,
+      default: ''
     },
     rounded: {
       type: Boolean,
@@ -45,12 +77,10 @@ export default {
     lighten: {
       type: Number,
       default: 80
-    }
-  },
-
-  data() {
-    return {
-      backgroundColors: [
+    },
+    backgroundColors: {
+      type: Array,
+      default: () => [
         '#F44336',
         '#FF4081',
         '#9C27B0',
@@ -72,87 +102,9 @@ export default {
       ]
     }
   },
-
-  mounted() {
-    if (!this.isImage) {
-      this.$emit('avatar-initials', this.username, this.userInitial)
-    }
-  },
-
-  computed: {
-    background() {
-      if (!this.isImage) {
-        return (
-          this.backgroundColor ||
-          this.randomBackgroundColor(
-            this.username.length,
-            this.backgroundColors
-          )
-        )
-      } else {
-        return null
-      }
-    },
-
-    fontColor() {
-      if (!this.isImage)
-        return this.color || this.lightenColor(this.background, this.lighten)
-      else return null
-    },
-
-    isImage() {
-      return Boolean(this.src)
-    },
-
-    style() {
-      const style = {
-        display: this.inline ? 'inline-flex' : 'flex',
-        width: `${this.size}px`,
-        height: `${this.size}px`,
-        borderRadius: this.rounded ? '50%' : 0,
-        lineHeight: `${this.size + Math.floor(this.size / 20)}px`,
-        fontWeight: 'bold',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center'
-      }
-
-      const imgBackgroundAndFontStyle = {
-        'background-image': `url(${this.src})`,
-        'background-position': 'center',
-        'background-repeat': 'no-repeat',
-        'background-size': 'cover'
-      }
-      //background: `transparent url('${this.src}') no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
-      const initialBackgroundAndFontStyle = {
-        backgroundColor: this.background,
-        font: `${Math.floor(this.size / 2.5)}px/${
-          this.size
-        }px Helvetica, Arial, sans-serif`,
-        color: this.fontColor
-      }
-
-      const backgroundAndFontStyle = this.isImage
-        ? imgBackgroundAndFontStyle
-        : initialBackgroundAndFontStyle
-
-      Object.assign(style, backgroundAndFontStyle)
-
-      return style
-    },
-
-    userInitial() {
-      if (!this.isImage) {
-        const initials = this.initials || this.initial(this.username)
-        return initials
-      }
-      return ''
-    }
-  },
-
   methods: {
-    initial(username) {
-      let parts = username.split(/[ -]/)
+    getUsernameInitials(username: String) {
+      const parts = username.split(/[ -]/)
       let initials = ''
 
       for (var i = 0; i < parts.length; i++) {
@@ -168,12 +120,11 @@ export default {
       return initials
     },
 
-    randomBackgroundColor(seed, colors) {
-      return colors[seed % colors.length]
+    randomBackgroundColor(seed: number, colors: String[]) {
+      return colors[seed || Math.floor(Math.random() * 10 + 1) % colors.length]
     },
 
-    lightenColor(hex, amt) {
-      // From https://css-tricks.com/snippets/javascript/lighten-darken-color/
+    lightenColor(hex: string, amt: number) {
       var usePound = false
 
       if (hex[0] === '#') {
@@ -198,7 +149,59 @@ export default {
       else if (g < 0) g = 0
 
       return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16)
+    },
+
+    background(backgroundColor: string, randomBackgroundColor: string) {
+      return backgroundColor || randomBackgroundColor
+    },
+
+    fontColor(color: string, lightenColor: string) {
+      return color || lightenColor
+    },
+
+    constructStyle(
+      inline: boolean,
+      size: number,
+      rounded: boolean,
+      src: string,
+      background: string,
+      fontColor: string
+    ) {
+      const style = {
+        display: inline ? 'inline-flex' : 'flex',
+        width: `${size}px`,
+        height: `${size}px`,
+        borderRadius: rounded ? '50%' : 0,
+        lineHeight: `${size + Math.floor(size / 20)}px`,
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
+      }
+
+      const imgBackgroundAndFontStyle = {
+        'background-image': `url(${src})`,
+        'background-position': 'center',
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover'
+      }
+      //background: `transparent url('${this.src}') no-repeat scroll 0% 0% / ${this.size}px ${this.size}px content-box border-box`
+      const initialBackgroundAndFontStyle = {
+        backgroundColor: background,
+        font: `${Math.floor(
+          size / 2.5
+        )}px/${size}px Helvetica, Arial, sans-serif`,
+        color: fontColor
+      }
+
+      const backgroundAndFontStyle = src
+        ? imgBackgroundAndFontStyle
+        : initialBackgroundAndFontStyle
+
+      Object.assign(style, backgroundAndFontStyle)
+
+      return style
     }
   }
-}
+})
 </script>

@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   title: 'v-avatar',
-  base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/v-avatar/' : '/',
+  base: '/',
   locales: {
     '/': {
       lang: 'en-US',
@@ -50,7 +50,7 @@ module.exports = {
         components: [
           {
             name: 'v-avatar',
-            path: path.resolve(__dirname, '../../src/v-avatar.vue')
+            path: path.resolve(__dirname, '../../dist/v-avatar.esm.js')
           }
         ]
       }

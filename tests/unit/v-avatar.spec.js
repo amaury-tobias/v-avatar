@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import Avatar from '../../src/v-avatar.vue'
+import Avatar from '../../src/components/v-avatar.vue'
 
 describe('Avatar.vue', function() {
   it('should divide name in parts on both space and hyphen', function() {
