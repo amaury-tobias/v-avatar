@@ -79,6 +79,8 @@ module.exports = {
 
 ## Navegador
 
+> El componente se autoinstala en entornos de navegadro
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -92,10 +94,7 @@ module.exports = {
     </div>
     <script>
       var app = new Vue({
-        el: '#app',
-        components: {
-          avatar: VAvatar
-        }
+        el: '#app'
       })
     </script>
   </body>

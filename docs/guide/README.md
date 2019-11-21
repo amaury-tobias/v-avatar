@@ -79,6 +79,8 @@ module.exports = {
 
 ## Browser
 
+> The component autoinstall in browser enviroment
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -92,10 +94,7 @@ module.exports = {
     </div>
     <script>
       var app = new Vue({
-        el: '#app',
-        components: {
-          avatar: VAvatar
-        }
+        el: '#app'
       })
     </script>
   </body>
