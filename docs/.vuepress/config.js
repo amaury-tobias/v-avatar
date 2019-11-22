@@ -50,7 +50,7 @@ module.exports = {
         components: [
           {
             name: 'v-avatar',
-            path: path.resolve(__dirname, '../../dist/v-avatar.esm.js')
+            path: path.resolve(__dirname, '../../src/v-avatar.vue')
           }
         ]
       }

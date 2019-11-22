@@ -8,7 +8,7 @@ next: false
 ## Default
 
 <br>
-<v-avatar username="Amaury Tobias" />
+<v-avatar  />
 
 ```html
 <v-avatar username="Amaury Tobias" />

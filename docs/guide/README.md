@@ -29,7 +29,7 @@ v-avatar is a UMD module, so it can be used in both a Vue and Nuxt instance as w
 </template>
 
 <script>
-  import vAvatar from '@amaury-tobias/v-avatar'
+  import { vAvatar } from '@amaury-tobias/v-avatar'
 
   export default {
     components: {
@@ -103,26 +103,18 @@ module.exports = {
 
 ## Properties
 
-| Name            |      Required      |  Type   |
-| --------------- | :----------------: | :-----: |
-| username        | :white_check_mark: | String  |
-| initials        |        :x:         | String  |
-| inline          |        :x:         | Boolean |
-| src             |        :x:         | String  |
-| :customStyle    |        :x:         | Object  |
-| backgroundColor |        :x:         | String  |
-| color           |        :x:         | String  |
-| :lighten        |        :x:         | Number  |
-| :size           |        :x:         | Number  |
-| :rounded        |        :x:         | Boolean |
-
-## Events
-
-> The event in fired when the component is ready and has calculated `initials` based on `username`.
-
-| Name             | Arguments             |
-| ---------------- | --------------------- |
-| @avatar-initials | `username` `initials` |
+| Name            | Required |  Type   | Default |
+| --------------- | :------: | :-----: | :-----: |
+| username        |   :x:    | String  |  'V-A'  |
+| initials        |   :x:    | String  |    -    |
+| inline          |   :x:    | Boolean |  false  |
+| src             |   :x:    | String  |    -    |
+| :customStyle    |   :x:    | Object  |    -    |
+| backgroundColor |   :x:    | String  |    -    |
+| color           |   :x:    | String  |    -    |
+| :lighten        |   :x:    | Number  |   80    |
+| :size           |   :x:    | Number  |   50    |
+| :rounded        |   :x:    | Boolean |  false  |
 
 ## Build Setup
 

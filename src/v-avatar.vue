@@ -1,6 +1,6 @@
 <template functional>
   <div
-    class="vue-avatar--wrapper"
+    :class="data.staticClass"
     :style="
       $options.methods.constructStyle(
         props.inline,
@@ -10,7 +10,7 @@
         $options.methods.background(
           props.backgroundColor,
           $options.methods.randomBackgroundColor(
-            props.username.length,
+            props.username,
             props.backgroundColors
           )
         ),
@@ -20,7 +20,7 @@
             $options.methods.background(
               props.backgroundColor,
               $options.methods.randomBackgroundColor(
-                props.username.length,
+                props.username,
                 props.backgroundColors
               )
             ),
@@ -32,32 +32,30 @@
     aria-hidden="true"
   >
     <span v-if="!props.src">
-      {{ $options.methods.getUsernameInitials(props.username) }}
+      {{ $options.methods.getUsernameInitials(props.username, props.initials) }}
     </span>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
+<script>
+export default {
   name: 'VAvatar',
   props: {
     username: {
       type: String,
-      default: ''
+      default: 'V-A'
     },
     initials: {
       type: String,
-      default: ''
+      default: undefined
     },
     backgroundColor: {
       type: String,
-      default: ''
+      default: undefined
     },
     color: {
       type: String,
-      default: ''
+      default: undefined
     },
     inline: {
       type: Boolean
@@ -71,8 +69,7 @@ export default Vue.extend({
       default: ''
     },
     rounded: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     lighten: {
       type: Number,
@@ -103,7 +100,8 @@ export default Vue.extend({
     }
   },
   methods: {
-    getUsernameInitials(username: String) {
+    getUsernameInitials(username, propInitials) {
+      if (propInitials && propInitials.length > 0) return propInitials
       const parts = username.split(/[ -]/)
       let initials = ''
 
@@ -120,11 +118,12 @@ export default Vue.extend({
       return initials
     },
 
-    randomBackgroundColor(seed: number, colors: String[]) {
-      return colors[seed || Math.floor(Math.random() * 10 + 1) % colors.length]
+    randomBackgroundColor(username, colors) {
+      const seed = username.length || Math.floor(Math.random() * 10 + 1)
+      return colors[seed % colors.length]
     },
 
-    lightenColor(hex: string, amt: number) {
+    lightenColor(hex, amt) {
       var usePound = false
 
       if (hex[0] === '#') {
@@ -151,22 +150,15 @@ export default Vue.extend({
       return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16)
     },
 
-    background(backgroundColor: string, randomBackgroundColor: string) {
+    background(backgroundColor, randomBackgroundColor) {
       return backgroundColor || randomBackgroundColor
     },
 
-    fontColor(color: string, lightenColor: string) {
+    fontColor(color, lightenColor) {
       return color || lightenColor
     },
 
-    constructStyle(
-      inline: boolean,
-      size: number,
-      rounded: boolean,
-      src: string,
-      background: string,
-      fontColor: string
-    ) {
+    constructStyle(inline, size, rounded, src, background, fontColor) {
       const style = {
         display: inline ? 'inline-flex' : 'flex',
         width: `${size}px`,
@@ -203,5 +195,5 @@ export default Vue.extend({
       return style
     }
   }
-})
+}
 </script>

@@ -29,7 +29,7 @@ v-avatar es un modulo UMD, por lo que puede ser utilizado en tanto en una instan
 </template>
 
 <script>
-  import vAvatar from '@amaury-tobias/v-avatar'
+  import { vAvatar } from '@amaury-tobias/v-avatar'
 
   export default {
     components: {
@@ -103,26 +103,18 @@ module.exports = {
 
 ## Propiedades
 
-| Nombre          |     Requerido      |  Tipo   |
-| --------------- | :----------------: | :-----: |
-| username        | :white_check_mark: | String  |
-| initials        |        :x:         | String  |
-| inline          |        :x:         | Boolean |
-| src             |        :x:         | String  |
-| :customStyle    |        :x:         | Object  |
-| backgroundColor |        :x:         | String  |
-| color           |        :x:         | String  |
-| :lighten        |        :x:         | Number  |
-| :size           |        :x:         | Number  |
-| :rounded        |        :x:         | Boolean |
-
-## Eventos
-
-> El evento en lanzado cuando el componente esta listo y ha calculado `initials` en base a `username`
-
-| Nombre           | Argumentos            |
-| ---------------- | --------------------- |
-| @avatar-initials | `username` `initials` |
+| Nombre          | Requerido |  Tipo   | Por defecto |
+| --------------- | :-------: | :-----: | :---------: |
+| username        |    :x:    | String  |    'V-A'    |
+| initials        |    :x:    | String  |      -      |
+| inline          |    :x:    | Boolean |    false    |
+| src             |    :x:    | String  |      -      |
+| :customStyle    |    :x:    | Object  |      -      |
+| backgroundColor |    :x:    | String  |      -      |
+| color           |    :x:    | String  |      -      |
+| :lighten        |    :x:    | Number  |     80      |
+| :size           |    :x:    | Number  |     50      |
+| :rounded        |    :x:    | Boolean |    false    |
 
 ## Build Setup
 

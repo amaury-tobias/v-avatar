@@ -5,20 +5,14 @@ import replace from '@rollup/plugin-replace'
 import commonjs from 'rollup-plugin-commonjs'
 
 import { terser } from 'rollup-plugin-terser'
-import typescript from 'rollup-plugin-typescript'
 import minimist from 'minimist'
 
 const argv = minimist(process.argv.slice(2))
 
 const baseConfig = {
-  input: 'src/build.ts',
+  input: 'src/build.js',
   plugins: {
     preVue: [
-      typescript({
-        tsconfig: false,
-        experimentalDecorators: true,
-        module: 'es2015'
-      }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
       }),

@@ -1,11 +1,15 @@
-import vAvatar from './v-avatar.vue'
-import { PluginObject } from 'vue'
+import component from './v-avatar.vue'
 
-const plugin: PluginObject<any> = {
+export const vAvatar = component
+
+const plugin = {
   install(Vue) {
+    if (this.installed) return
+    this.installed = true
     Vue.component('v-avatar', vAvatar)
   }
 }
+
 //@ts-ignore
 if (typeof window !== 'undefined' && window.Vue) {
   //@ts-ignore
