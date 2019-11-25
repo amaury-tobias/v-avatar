@@ -1,12 +1,6 @@
-import { VueConstructor } from 'vue'
-import { PluginObject } from 'vue'
-
-export interface VAvatarProps {}
-
-export interface vAvatar extends VueConstructor {
-  props: VAvatarProps
+declare module '@amaury-tobias/v-avatar' {
+  import { PluginObject, VueConstructor } from 'vue'
+  const plugin: PluginObject<any>
+  export default plugin
+  export const vAvatar: VueConstructor
 }
-
-interface VAvatarPluginObject extends PluginObject<any> {}
-declare var VAvatar: VAvatarPluginObject
-export default VAvatar

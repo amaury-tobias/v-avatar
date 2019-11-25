@@ -1,6 +1,8 @@
 name: Node.js test and npm publish
 
-on: release
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
