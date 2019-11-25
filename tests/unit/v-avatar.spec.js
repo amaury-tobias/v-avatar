@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import Avatar from '../../src/avatar-func.vue'
+import Avatar from '../../src/component'
 import methods from '../../src/utils'
 
 describe('Avatar.vue', function() {
