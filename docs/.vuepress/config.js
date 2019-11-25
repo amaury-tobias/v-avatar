@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   title: 'v-avatar',
-  base: '/',
+  base: '/v-avatar/',
   locales: {
     '/': {
       lang: 'en-US',
