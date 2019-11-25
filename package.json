@@ -1,6 +1,6 @@
 {
   "name": "@amaury-tobias/v-avatar",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Componente de avatar basado en Vue.js",
   "author": "amaury.tobiasqr@gmail.com",
   "scripts": {
@@ -19,14 +19,6 @@
   "module": "dist/v-avatar.esm.js",
   "unpkg": "dist/v-avatar.min.js",
   "typings": "types/index.d.ts",
-  "files": [
-    "dist/*",
-    "src/**/*.vue",
-    "package.json",
-    "README",
-    "CHANGELOG",
-    "LICENSE"
-  ],
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-buble": "^0.20.0",
