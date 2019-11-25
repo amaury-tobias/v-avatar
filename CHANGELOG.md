@@ -1,4 +1,15 @@
+# v2.0.0 - `Bring`
+
+- **[NEW]** Functional component, to reduce bundle size
+- **[NEW]** .d.ts file to tipe module
+- **[UPDATE]** npm dependencies
+- **[UPDATE]** Documentation
+- **[UPDATE]** Unit tests
+- ⚠ **BREAKING** ⚠
+- **[REMOVED]** emit events are removed
+
 # v1.0.5
+
 - **[UPDATE]** npm dependencies update
 - **[NEW]** Vuepress Documentation
 

@@ -1,6 +1,6 @@
 {
   "name": "@amaury-tobias/v-avatar",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Componente de avatar basado en Vue.js",
   "author": "amaury.tobiasqr@gmail.com",
   "scripts": {
