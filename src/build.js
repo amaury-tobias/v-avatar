@@ -1,4 +1,4 @@
-import component from './v-avatar.vue'
+import component from './component'
 
 export const vAvatar = component
 
@@ -10,9 +10,7 @@ const plugin = {
   }
 }
 
-//@ts-ignore
 if (typeof window !== 'undefined' && window.Vue) {
-  //@ts-ignore
   window.Vue.use(plugin)
 }
 

@@ -1,4 +1,3 @@
-import vue from 'rollup-plugin-vue'
 import buble from '@rollup/plugin-buble'
 import replace from '@rollup/plugin-replace'
 
@@ -18,18 +17,12 @@ const baseConfig = {
       }),
       commonjs()
     ],
-    vue: {
-      css: false,
-      template: {
-        isProduction: true
-      }
-    },
     postVue: [buble()]
   }
 }
 
-const external = ['vue']
-const globals = { vue: 'Vue' }
+const external = []
+const globals = {}
 
 const buildFormats = []
 if (!argv.format || argv.format === 'es') {
@@ -43,7 +36,6 @@ if (!argv.format || argv.format === 'es') {
     },
     plugins: [
       ...baseConfig.plugins.preVue,
-      vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
       terser({
         output: {
@@ -67,17 +59,7 @@ if (!argv.format || argv.format === 'cjs') {
       exports: 'named',
       globals
     },
-    plugins: [
-      ...baseConfig.plugins.preVue,
-      vue({
-        ...baseConfig.plugins.vue,
-        template: {
-          ...baseConfig.plugins.vue.template,
-          optimizeSSR: true
-        }
-      }),
-      ...baseConfig.plugins.postVue
-    ]
+    plugins: [...baseConfig.plugins.preVue, ...baseConfig.plugins.postVue]
   }
   buildFormats.push(umdConfig)
 }
@@ -96,7 +78,6 @@ if (!argv.format || argv.format === 'iife') {
     },
     plugins: [
       ...baseConfig.plugins.preVue,
-      vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
       terser({
         output: {
